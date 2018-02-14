@@ -7,14 +7,7 @@
 
 @foreach (var p in Model.Orders)
 {
-    <div class="item">
-        <h3>@p.Name</h3>
-        <p>@p.Adress</p>
-        <p>@p.Telephone</p>
-        <p>@p.Thing</p>
-        <p>@p.Category</p>
-        <h4>@p.Price.ToString("c")</h4>
-    </div>
+    Html.RenderPartial("OrderSummary", p);
 }
 
 <div class="pager">
