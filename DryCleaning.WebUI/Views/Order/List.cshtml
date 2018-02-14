@@ -1,0 +1,15 @@
+﻿@model IEnumerable<DryCleaning.Domain.Entities.Order>
+@{
+    ViewBag.Title = "Orders";
+}
+@foreach (var p in Model)
+{
+<div class="item">
+    <h3>@p.Name</h3>
+    <p>@p.Adress</p>
+    <p>@p.Telephone</p>
+    <p>@p.Thing</p>
+    <p>@p.Category</p>
+    <h4>@p.Price.ToString("c")</h4>
+</div>
+}
