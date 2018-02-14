@@ -1,15 +1,22 @@
-﻿@model IEnumerable<DryCleaning.Domain.Entities.Order>
+﻿@model DryCleaning.WebUI.Models.OrdersListViewModel
+
+
 @{
-    ViewBag.Title = "Orders";
+    ViewBag.Title = "Клиенты";
 }
-@foreach (var p in Model)
+
+@foreach (var p in Model.Orders)
 {
-<div class="item">
-    <h3>@p.Name</h3>
-    <p>@p.Adress</p>
-    <p>@p.Telephone</p>
-    <p>@p.Thing</p>
-    <p>@p.Category</p>
-    <h4>@p.Price.ToString("c")</h4>
-</div>
+    <div class="item">
+        <h3>@p.Name</h3>
+        <p>@p.Adress</p>
+        <p>@p.Telephone</p>
+        <p>@p.Thing</p>
+        <p>@p.Category</p>
+        <h4>@p.Price.ToString("c")</h4>
+    </div>
 }
+
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+</div>
