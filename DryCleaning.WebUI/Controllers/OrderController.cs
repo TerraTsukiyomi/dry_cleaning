@@ -18,11 +18,12 @@ namespace DryCleaning.WebUI.Controllers
             this.repository = orderRepository;
         }
 
-        public ViewResult List(int page = 1)
+        public ViewResult List(string category, int page = 1)
         {
             OrdersListViewModel model = new OrdersListViewModel
             {
                 Orders = repository.Orders
+                .Where(p => category == null || p.Category == category)
                  .OrderBy(p => p.OrderID)
                  .Skip((page - 1) * PageSize)
                  .Take(PageSize),
@@ -31,7 +32,8 @@ namespace DryCleaning.WebUI.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
                     TotalItems = repository.Orders.Count()
-                }
+                },
+                CurrentCategory = category
             };
             return View(model);
         }
