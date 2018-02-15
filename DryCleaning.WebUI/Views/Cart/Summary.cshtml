@@ -1,0 +1,14 @@
+﻿@model DryCleaning.Domain.Entities.Cart
+
+<div id="cart">
+    <span class="caption">
+        <b>Заказ:</b>
+        @Model.Lines.Sum(x => x.Quantity) шт,
+        @Model.ComputeTotalValue().ToString("c")
+    </span>
+    @Html.ActionLink("Накладная", "Index", "Cart", new
+    {
+        returnUrl =
+    Request.Url.PathAndQuery
+    }, null)
+</div>

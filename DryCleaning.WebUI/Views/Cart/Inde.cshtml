@@ -1,9 +1,10 @@
 ﻿@model DryCleaning.WebUI.Models.CartIndeViewModel
 
 @{
-    ViewBag.Title = "Заказ/Чек";
+    ViewBag.Title = "Заказ";
 }
-<h2>Чек</h2>
+<h2>Заказ</h2>
+
 <table width="90%" align="center">
     <thead>
         <tr>
@@ -17,24 +18,35 @@
     <tbody>
         @foreach (var line in Model.Cart.Lines)
         {
-        <tr>
-            <td align="center">@line.Quantity</td>
-            <td align="left">@line.Order.Thing</td>
-            <td align="left">@line.Order.Category</td>
-            <td align="right">@line.Order.Price.ToString("c")</td>
-            <td align="right">
-                @((line.Quantity * line.Order.Price).ToString("c"))
-            </td>
-        </tr>
+            <tr>
+                <td align="center">@line.Quantity</td>
+                <td align="left">@line.Order.Thing</td>
+                <td align="left">@line.Order.Category</td>
+                <td align="right">@line.Order.Price.ToString("c")</td>
+                <td align="right">
+                    @((line.Quantity * line.Order.Price).ToString("c"))
+                </td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                    {
+                        @Html.Hidden("OrderId", line.Order.OrderID)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="actionButtons" type="submit" value="Удалить" />
+                    }
+                </td>
+
+            </tr>
         }
     </tbody>
     <tfoot>
         <tr>
             <td colspan="4" align="right">ВСЕГО:<br><h6><i>НДС:</i></h6></td>
             <td align="right">@Model.Cart.ComputeTotalValue().ToString("c")<br><h6><i>@((Model.Cart.ComputeTotalValue() / 6).ToString("c"))</i></h6></td>
-        </tr>        
+        </tr>
     </tfoot>
+</p>
 </table>
 <p align="center" class="actionButtons">
     <a href="@Model.ReturnUrl">Вернуться к списку клиентов</a>
+    @Html.ActionLink("Сформировать накладную", "Checkout")
 </p>

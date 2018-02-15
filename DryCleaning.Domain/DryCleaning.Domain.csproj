@@ -71,6 +71,7 @@
     <Compile Include="Concrete\EFOrderRepository.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

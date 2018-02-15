@@ -31,6 +31,7 @@
     </div>
     <div class="container body-content">
         <div id="header">
+            @{Html.RenderAction("Summary", "Cart");}
             <div class="title" align="center">@Html.ActionLink("~ Учет деятельности Химчистки ' Ω ' ~", "List", "Order")</div>
         </div>
         <div id="categories">

@@ -16,45 +16,44 @@ namespace DryCleaning.WebUI.Controllers
         {
             repository = repo;
         }
-
-        public ViewResult Inde(string returnUrl)
+        public ViewResult Inde(Cart cart, string returnUrl)
         {
             return View(new CartIndeViewModel
             {
-                Cart = GetCart(),
+                Cart = cart,
                 ReturnUrl = returnUrl
             });
         }
+        public RedirectToRouteResult AddToCart(Cart cart, int orderId, string returnUrl)
+        {
+            Order order = repository.Orders.FirstOrDefault(p => p.OrderID ==
+           orderId);
+            if (order != null)
+            {
+                cart.AddItem(order, 1);
+            }
+            return RedirectToAction("Inde", new { returnUrl });
+        }
+        public RedirectToRouteResult RemoveFromCart(Cart cart, int orderId, string
+returnUrl)
+        {
+            Order order = repository.Orders.FirstOrDefault(p => p.OrderID ==
+           orderId);
+            if (order != null)
+            {
+                cart.RemoveLine(order);
+            }
+            return RedirectToAction("Inde", new { returnUrl });
+        }
+        public PartialViewResult Summary(Cart cart)
+        {
+            return PartialView(cart);
+        }
 
-        public RedirectToRouteResult AddToCart(int orderId, string returnUrl)
+        public ViewResult Checkout()
         {
-            Order order = repository.Orders
-                .FirstOrDefault(p => p.OrderID == orderId);
-            if (order != null)
-            {
-                GetCart().AddItem(order, 1);
-            }
-            return RedirectToAction("Inde", new { returnUrl });
+            return View(new ShippingDetails());
         }
-        public RedirectToRouteResult RemoveFromCart(int orderId, string returnUrl)
-        {
-            Order order = repository.Orders
-            .FirstOrDefault(p => p.OrderID == orderId);
-            if (order != null)
-            {
-                GetCart().RemoveLine(order);
-            }
-            return RedirectToAction("Inde", new { returnUrl });
-        }
-        private Cart GetCart()
-        {
-            Cart cart = (Cart)Session["Cart"];
-            if (cart == null)
-            {
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
-            return cart;
-        }
+
     }
 }
