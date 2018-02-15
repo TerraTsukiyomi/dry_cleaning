@@ -10,6 +10,7 @@ namespace DryCleaning.WebUI.Models
     {
         public IEnumerable<Order> Orders { get; set; }
         public PagingInfo PagingInfo { get; set; }
-        public string CurrentCategory { get; set; }
+        public string CurrentCategory { get; set; }
+
     }
 }
