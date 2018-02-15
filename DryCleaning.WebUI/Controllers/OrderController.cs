@@ -31,7 +31,9 @@ namespace DryCleaning.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = repository.Orders.Count()
+                    TotalItems = category == null ?
+                    repository.Orders.Count() :
+                    repository.Orders.Where(e => e.Category == category).Count()
                 },
                 CurrentCategory = category
             };

@@ -6,5 +6,13 @@
     <p>@Model.Telephone</p>
     <p>@Model.Thing</p>
     <p>@Model.Category</p>
+
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        @Html.HiddenFor(x => x.OrderID)
+        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+        <input type="submit" value="+ Add to cart" />
+    }
+
     <h4>@Model.Price.ToString("c")</h4>
 </div>

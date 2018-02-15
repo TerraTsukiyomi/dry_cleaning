@@ -34,16 +34,26 @@
             <div class="title" align="center">@Html.ActionLink("~ Учет деятельности Химчистки ' Ω ' ~", "List", "Order")</div>
         </div>
         <div id="categories">
-            We will put something useful here later
+            @{ Html.RenderAction("Menu", "Nav"); }
         </div>
         <div id="content">
             @RenderBody()
         </div>
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
-        </footer>
     </div>
+    <footer>
+        <div class="container" align="right">
+            <hr />
+            <p>&copy; @DateTime.Now.Year – сайт: ~ Учет деятельности Химчистки ' Ω ' </p>
+            <p>от комманды "IT CLUB":</p>
+            <ul>
+                <li>Лугачева</li>
+                <li>Сивоконь</li>
+                <li>Чан Тен Тунг</li>
+                <li>Александров</li>
+            </ul>
+        </div>
+    </footer>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

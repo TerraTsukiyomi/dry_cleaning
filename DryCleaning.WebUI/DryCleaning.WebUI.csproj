@@ -166,13 +166,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Models\CartIndeViewModel.cs" />
     <Compile Include="Models\OrdersListViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -218,6 +221,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Order\List.cshtml" />
     <Content Include="Views\Shared\OrderSummary.cshtml" />
+    <Content Include="Views\Nav\Menu.cshtml" />
+    <Content Include="Views\Cart\Inde.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
