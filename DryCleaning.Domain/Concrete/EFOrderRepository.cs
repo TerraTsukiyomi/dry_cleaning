@@ -38,5 +38,15 @@ namespace DryCleaning.Domain.Concrete
             context.SaveChanges();
         }
 
+        public Order DeleteOrder(int orderID)
+        {
+            Order dbEntry = context.Orders.Find(orderID);
+            if (dbEntry != null)
+            {
+                context.Orders.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
     }
 }

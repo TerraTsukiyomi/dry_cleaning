@@ -11,5 +11,6 @@ namespace DryCleaning.Domain.Abstract
     {
         IQueryable<Order> Orders { get; }
         void SaveOrder(Order order);
+        Order DeleteOrder(int orderID);
     }
 }

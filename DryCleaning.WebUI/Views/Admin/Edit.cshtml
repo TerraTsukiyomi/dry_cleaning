@@ -8,7 +8,7 @@
 <h1>Редактируем "@Model.Name"</h1>
 <br />
 <div class="otstup">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "Admin"))
     {
         @Html.EditorForModel()
         <br />

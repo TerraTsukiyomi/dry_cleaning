@@ -40,5 +40,21 @@ namespace DryCleaning.WebUI.Controllers
                 return View(order);
             }
         }
+
+        public ViewResult Create()
+        {
+            return View("Edit", new Order());
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int orderId)
+        {
+            Order deletedOrder = repository.DeleteOrder(orderId);
+            if (deletedOrder != null)
+            {
+                TempData["message"] = string.Format("{0} was deleted", deletedOrder.Name);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
