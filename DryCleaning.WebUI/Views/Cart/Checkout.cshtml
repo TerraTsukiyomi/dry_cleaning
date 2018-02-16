@@ -4,22 +4,33 @@
 @{
     /**/
 
+    /**/
+
     ViewBag.Title = "Накладная";
 }
 
+
+
 @using (Html.BeginForm())
 {
-    <h3>Формирование накладной</h3><br>
-    <div><pre>Клиент:          @Html.EditorFor(x => x.Client)</pre></div>
-    <div><pre>Услуга:          @Html.EditorFor(x => x.Service)</pre></div>
-    <div><pre>Вещь:            @Html.EditorFor(x => x.Clothes)</pre></div>
-    <div><pre>Дефект:          @Html.EditorFor(x => x.Defect)</pre></div>
-    <div><pre>Принято (дата):  @Html.EditorFor(x => x.Data_in)</pre></div>
-    <div><pre>Дата реализации: @Html.EditorFor(x => x.Data_plan)</pre></div>
-    <div><pre>Дата возврата:   @Html.EditorFor(x => x.Data_comp)</pre></div>
-    <div><pre>Сумма к оплате:  @Html.EditorFor(x => x.Price)</pre></div>
+    @Html.ValidationSummary()
+        <h3>Формирование накладной</h3><br>
+        <div><pre>Клиент:          @Html.EditorFor(x => x.Client)</pre></div>
+        <div><pre>Услуга:          @Html.EditorFor(x => x.Service)</pre></div>
+        <div><pre>Вещь:            @Html.EditorFor(x => x.Clothes)</pre></div>
+        <div><pre>Дефект:          @Html.EditorFor(x => x.Defect)</pre></div>
+        <div><pre>Принято (дата):  @Html.EditorFor(x => x.Data_in)</pre></div>
+        <div><pre>Дата реализации: @Html.EditorFor(x => x.Data_plan)</pre></div>
+        <div><pre>Дата возврата:   @Html.EditorFor(x => x.Data_comp)</pre></div>
+        <div><pre>Сумма к оплате:  @Html.EditorFor(x => x.Price)</pre></div>
 
-    <p align="center">
-        <input class="actionButtons" type="submit" value="Сформировать накладную" />
-    </p>
+        <label>
+            @Html.EditorFor(x => x.GiftWrap)
+            Скидка
+        </label>
+
+        <p align="center">
+            <input class="actionButtons" type="submit" value="Сформировать накладную" />
+        </p>
+    
 }

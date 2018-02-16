@@ -26,6 +26,7 @@ namespace DryCleaning.Domain.Entities
 
             [Required(ErrorMessage = "Please enter a country name")]
             public string Price { get; set; }
-        }
+            public bool GiftWrap { get; set; }
+    }
     
 }

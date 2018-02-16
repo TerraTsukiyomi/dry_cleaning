@@ -1,18 +1,19 @@
 ﻿@model DryCleaning.Domain.Entities.Order
 
 <div class="item">
-    <h3>@Model.Name</h3>
-    <p>@Model.Adress</p>
-    <p>@Model.Telephone</p>
-    <p>@Model.Thing</p>
-    <p>@Model.Category</p>
+<pre>
+<b size="20pt">  &diams; @Model.Name</b>
+    Адрес:        @Model.Adress
+    Телефон:      @Model.Telephone
+    Вещь:         @Model.Thing
+    Стирка        @Model.Category
 
     @using (Html.BeginForm("AddToCart", "Cart"))
     {
         @Html.HiddenFor(x => x.OrderID)
         @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-        <input type="submit" value="+ Add to cart" />
+<input type="submit" value="+ Add to cart" />
     }
-
-    <h4>@Model.Price.ToString("c")</h4>
+<b size="20pt">                &#9658; @Model.Price.ToString("c")</b>
+</pre>
 </div>

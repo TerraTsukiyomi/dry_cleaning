@@ -12,9 +12,12 @@ namespace DryCleaning.WebUI.Controllers
     public class CartController : Controller
     {
         private IOrderRepository repository;
-        public CartController(IOrderRepository repo)
+        private IOrderProcessor orderProcessor;
+
+        public CartController(IOrderRepository repo, IOrderProcessor proc)
         {
             repository = repo;
+            orderProcessor = proc;
         }
         public ViewResult Inde(Cart cart, string returnUrl)
         {
@@ -48,6 +51,25 @@ returnUrl)
         public PartialViewResult Summary(Cart cart)
         {
             return PartialView(cart);
+        }
+
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        {
+            if (cart.Lines.Count() == 0)
+            {
+                ModelState.AddModelError("", "Пустой!");
+            }
+            if (ModelState.IsValid)
+            {
+                orderProcessor.ProcessOrder(cart, shippingDetails);
+                cart.Clear();
+                return View("Completed");
+            }
+            else
+            {
+                return View(shippingDetails);
+            }
         }
 
         public ViewResult Checkout()

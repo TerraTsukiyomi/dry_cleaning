@@ -9,6 +9,7 @@ using Moq;
 using DryCleaning.Domain.Abstract;
 using DryCleaning.Domain.Entities;
 using DryCleaning.Domain.Concrete;
+using System.Configuration;
 
 namespace DryCleaning.WebUI.Infrastructure
 {
@@ -35,7 +36,14 @@ namespace DryCleaning.WebUI.Infrastructure
         private void AddBindings()
         {
             ninjectKernel.Bind<IOrderRepository>().To<EFOrderRepository>();
-
+            EmailSettings emailSettings = new EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager
+                    .AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+            ninjectKernel.Bind<IOrderProcessor>()
+            .To<EmailOrderProcessor>()
+            .WithConstructorArgument("settings", emailSettings);
         }
     }
 }

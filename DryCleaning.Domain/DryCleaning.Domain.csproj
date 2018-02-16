@@ -66,9 +66,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IOrderProcessor.cs" />
     <Compile Include="Abstract\IOrderRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFOrderRepository.cs" />
+    <Compile Include="Concrete\EmailOrderProcessor.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
