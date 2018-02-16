@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Редактируем "@Model.Name"</h1>
+<h1>Заказ "@Model.Name"</h1>
 <br />
 <div class="otstup">
     @using (Html.BeginForm("Edit", "Admin"))
@@ -16,4 +16,7 @@
         <input type="submit" value="Сохранить" />
         @Html.ActionLink("Отменить и вернуться к каталогу анкет", "Index")
     }
+    <br />
+    <br />
+    <br />
 </div>

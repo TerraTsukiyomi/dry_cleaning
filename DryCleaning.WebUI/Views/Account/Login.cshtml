@@ -1,11 +1,11 @@
 ﻿@model DryCleaning.WebUI.Models.LoginViewModel
 
 @{
-    ViewBag.Title = "Admin: Log In";
+    ViewBag.Title = "Авторизация";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<h1>Log In</h1>
-<p>Please log in to access the administrative area:</p>
+<h1>Авторизация</h1>
+<p>Для того, что пользоваться системой введи:</p>
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)

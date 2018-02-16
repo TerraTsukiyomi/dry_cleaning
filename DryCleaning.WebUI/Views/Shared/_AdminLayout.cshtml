@@ -10,12 +10,14 @@
     <title></title>
 </head>
 <body>
+    <h3 align="center">АДМИН ЧАСТЬ</h3>
+    <h6 align="center"><i>@Html.ActionLink("К сайту", "Index", "Home")</i></h6>
     <div>
         @if (TempData["message"] != null)
-         {
+        {
             <div class="Message">@TempData["message"]</div>
-         }
-        
+        }
+
         @RenderBody()
 
     </div>
