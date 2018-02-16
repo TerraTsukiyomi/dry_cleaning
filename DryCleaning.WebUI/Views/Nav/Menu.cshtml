@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<string>
 
-@Html.ActionLink("Клиенты", "List", "Order")
+@Html.ActionLink("Заказы", "List", "Order")
 @foreach (var link in Model)
 {
     @Html.RouteLink(link, new

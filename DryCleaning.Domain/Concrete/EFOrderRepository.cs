@@ -15,6 +15,28 @@ namespace DryCleaning.Domain.Concrete
         {
             get { return context.Orders; }
         }
-    
+
+        public void SaveOrder(Order order)
+        {
+            if (order.OrderID == 0)
+            {
+                context.Orders.Add(order);
+            }
+            else
+            {
+                Order dbEntry = context.Orders.Find(order.OrderID);
+                if (dbEntry != null)
+                {
+                    dbEntry.Name = order.Name;
+                    dbEntry.Adress = order.Adress;
+                    dbEntry.Telephone = order.Telephone;
+                    dbEntry.Thing = order.Thing;
+                    dbEntry.Category = order.Category;
+                    dbEntry.Price = order.Price;
+                }
+            }
+            context.SaveChanges();
+        }
+
     }
 }

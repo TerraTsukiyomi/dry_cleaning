@@ -9,22 +9,22 @@ namespace DryCleaning.Domain.Entities
 {
         public class ShippingDetails
         {
-            [Required(ErrorMessage = "Please enter a name")]
+            [Required(ErrorMessage = "Пожалуйста введите имя клиента")]
             public string Client { get; set; }
 
-            [Required(ErrorMessage = "Please enter the first address line")]
+            [Required(ErrorMessage = "Пожалуйста введите услугу")]
             public string Service { get; set; }
             public string Clothes { get; set; }
             public string Defect { get; set; }
 
-            [Required(ErrorMessage = "Please enter a city name")]
+            [Required(ErrorMessage = "Пожалуйста введите дату принятия заказа")]
             public DateTime Data_in { get; set; }
 
-            [Required(ErrorMessage = "Please enter a state name")]
+            [Required(ErrorMessage = "Пожалуйста введите плановую дату выполнения заказа")]
             public DateTime Data_plan { get; set; }
             public DateTime Data_comp { get; set; }
 
-            [Required(ErrorMessage = "Please enter a country name")]
+            [Required(ErrorMessage = "Введите стоимость")]
             public string Price { get; set; }
             public bool GiftWrap { get; set; }
     }

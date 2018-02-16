@@ -1,0 +1,19 @@
+﻿@model DryCleaning.Domain.Entities.Order
+
+@{
+    ViewBag.Title = "Admin: Edit " + @Model.Name;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Редактируем "@Model.Name"</h1>
+<br />
+<div class="otstup">
+    @using (Html.BeginForm())
+    {
+        @Html.EditorForModel()
+        <br />
+        <br />
+        <input type="submit" value="Сохранить" />
+        @Html.ActionLink("Отменить и вернуться к каталогу анкет", "Index")
+    }
+</div>

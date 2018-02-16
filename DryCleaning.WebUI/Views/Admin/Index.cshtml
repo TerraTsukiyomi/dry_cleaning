@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DryCleaning.Domain.Entities.Order>
+@{
+    ViewBag.Title = "Анкеты клиентов";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Каталог анкет клиентов</h2>
+<hr>
+<p align="center">@Html.ActionLink("Создать новую анкету", "Create")</p>
+<hr>
+<table class="Grid">
+    </br>
+    <tr>
+        <th>ID</th>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Adress)</th>
+        <th>@Html.DisplayNameFor(model => model.Telephone)</th>
+        <th>@Html.DisplayNameFor(model => model.Thing)</th>
+        <th>@Html.DisplayNameFor(model => model.Category)</th>
+
+        <th class="NumericCol">@Html.DisplayNameFor(model => model.Price)</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.OrderID</td>
+            <td>@Html.ActionLink(item.Name, "Edit", new { item.OrderID })</td>
+            <th>@Html.DisplayFor(modelItem => item.Adress)</th>
+            <th>@Html.DisplayFor(modelItem => item.Telephone)</th>
+            <td>@Html.DisplayFor(modelItem => item.Thing)</td>
+            <td>@Html.DisplayFor(modelItem => item.Category)</td>
+
+            <td class="NumericCol">@item.Price.ToString("c")</td>
+            <td>
+                @using (Html.BeginForm("Delete", "Admin"))
+                {
+                    @Html.Hidden("ProductID", item.OrderID)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+    }
+</table>
