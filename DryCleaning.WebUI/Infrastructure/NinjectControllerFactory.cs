@@ -10,6 +10,8 @@ using DryCleaning.Domain.Abstract;
 using DryCleaning.Domain.Entities;
 using DryCleaning.Domain.Concrete;
 using System.Configuration;
+using DryCleaning.WebUI.Infrastructure.Abstract;
+using DryCleaning.WebUI.Infrastructure.Concrete;
 
 namespace DryCleaning.WebUI.Infrastructure
 {
@@ -43,7 +45,9 @@ namespace DryCleaning.WebUI.Infrastructure
             };
             ninjectKernel.Bind<IOrderProcessor>()
             .To<EmailOrderProcessor>()
-            .WithConstructorArgument("settings", emailSettings);
+            .WithConstructorArgument("settings", emailSettings);
+            ninjectKernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
+
         }
     }
 }
