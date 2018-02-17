@@ -1,10 +1,12 @@
-﻿@{
+﻿@model IEnumerable<DryCleaning.Domain.Entities.Order>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
     <h1>Химчисткa ~ Ω ~</h1>
-    
+
     <br />
     <p class="lead">Этот сайт, разработанный 'IT CLUB', предназначен:</p>
     <ul>
@@ -22,20 +24,20 @@
     <div class="col-md-4">
         <h2>Все заказы</h2>
         <p>
-           Вы имеете возможность просмотра всех заказов сделанных из разных предприятий.
+            Вы имеете возможность просмотра всех заказов сделанных из разных предприятий.
         </p>
-        <p>@Html.ActionLink("Все заказы >> ", "Admin" , "Index")</p>
+        <p>@Html.ActionLink("Все заказы >> ", "Index", "Admin")</p> 
     </div>
     <div class="col-md-4">
         <h2>Создать</h2>
         <p>Вы имеете возможность создать новый заказ,</p>
         <p>который будет позже добавлен в БД.</p>
-        <p> @(Html.ActionLink("Создать новую анкету >> ", "Create"))</p>
+        <p> @(Html.ActionLink("Создать новую анкету >> ", "Create", "Admin"))</p>
     </div>
     <div class="col-md-4">
         <h2>Накладная</h2>
         <p>Вы можете сформировать накладную</p>
         <p>клиента.</p>
-        <p>@Html.ActionLink("Сформировать накладную >>", "Checkout")</p>
+        <p>@Html.ActionLink("Сформировать накладную >>", "Checkout", "Cart")</p>
     </div>
 </div>
